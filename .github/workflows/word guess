@@ -1,0 +1,141 @@
+def w():
+    import time  
+    import sys, tty, termios
+
+    
+#welcoming the user
+    name = input("What is your name: ")
+
+    print ("Hello "+ name+". Time to play hangman!")
+
+    print ("\n")
+
+#wait for 1 second
+    time.sleep(1)
+
+#here we set the secret word
+    
+    word=input("Enter a word:") 
+    
+    
+
+    print ("Start guessing...")
+    time.sleep(0.5)
+
+#creates a variable with an empty value
+    guesses = ""
+
+#determine the number of turns
+    turns = 10 
+
+# Create a while loop
+
+#check if the turns are more than zero
+    while turns > 0:         
+
+    # make a counter that starts with zero
+        failed = 0
+     
+
+    # for every character in secret_word    
+        for char in word:      
+
+    # see if the character is in the players guess
+            if char in guesses:    
+    
+        # print then out the character
+                 sys.stdout.write(char)
+
+            else:
+    
+        # if not found, print a dash
+                sys.stdout.write("_ ") 
+       
+        # and increase the failed counter with one
+                failed += 1
+                score=(10*turns)
+
+    # if failed is equal to zero 
+
+    # print You Won
+        if failed == 0:        
+            print ("\nYou Won! in ",10-turns,"turns")
+            time.sleep(0.5)
+            print("\nYour total score=",score)
+
+    # exit the script
+            break              
+
+
+
+    # ask the user to guess a character
+        guess = input(" \nguess a character:") 
+
+    # set the players guess to guesses
+        guesses += guess                    
+    
+    # if the guess is not found in the secret word
+        if guess not in word:  
+ 
+     # turns counter decreases with 1 (now 9)
+            turns -= 1
+                
+            if turns==9:
+                print("Wrong! /")
+            elif turns==8:
+                print("Wrong! /")
+                print("      (")
+                  
+            elif turns==7:
+                print("Wrong! /")
+                print("      ()")
+                
+            elif turns==6:
+                print("Wrong! /")
+                print("      ()")
+                print("      [")
+                
+            elif turns==5:
+                print("Wrong! /")
+                print("      ()")
+                print("      []")
+ 
+            elif turns==4:
+                print("Wrong! /")
+                print("      ()")
+                print("      []")
+                print("      -")
+                
+            elif turns==3:
+                print("Wrong! /")
+                print("      ()")
+                print("      []")
+                print("      --")
+                
+            elif turns==2:
+                print("Wrong! /")
+                print("      ()")
+                print("     -[]")
+                print("      --")
+                
+            elif turns==1:
+                print("Wrong! /")
+                print("      ()")
+                print("     -[]-")
+                print("      --")
+                print("\n")
+                
+                
+                
+               
+            
+    # how many turns are left
+            print ("You have", turns, 'more guesses') 
+ 
+    # if the turns are equal to zero
+            if turns == 0:           
+    
+        # print "You Lose"
+                print ("You Lose!")
+
+w()
